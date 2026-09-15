@@ -208,10 +208,10 @@ export function downloadStudentResultPDF(result: ExamResult): void {
   doc.text('Mengetahui,', colLeft, ttdY);
   doc.text('Orang Tua / Wali Siswa,', colLeft, ttdY + 5);
 
-  // Kolom Kanan: Guru Kelas VI
+  // Kolom Kanan: Guru Kelas
   const tglFormatted = formatIndonesianDate();
   doc.text(`Jembrana, ${tglFormatted}`, colRight, ttdY);
-  doc.text('Guru Mata Pelajaran / Kelas VI,', colRight, ttdY + 5);
+  doc.text(`Guru Mata Pelajaran / Kelas ${CONFIG.KELAS},`, colRight, ttdY + 5);
 
   // Area tanda tangan (spasi vertikal)
   const lineY = ttdY + 27;
@@ -226,7 +226,8 @@ export function downloadStudentResultPDF(result: ExamResult): void {
   doc.line(colRight, lineY, colRight + 48, lineY);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
-  doc.text(`NIP. ${CONFIG.NIP_GURU}`, colRight, lineY + 4);
+  const guruLabel = (CONFIG as any).LABEL_NIP_GURU || 'NIP';
+  doc.text(`${guruLabel}. ${CONFIG.NIP_GURU}`, colRight, lineY + 4);
 
   // Simpan PDF
   const safeName = (result.nama || 'siswa').replace(/[^a-zA-Z0-9]/g, '_');
@@ -260,7 +261,7 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
     doc.setFontSize(8);
     doc.setTextColor(120, 120, 120);
     doc.text(
-      `${CONFIG.SEKOLAH} | Naskah Soal Tes Sumatif Matematika Kelas VI`,
+      `${CONFIG.SEKOLAH} | Naskah Soal Tes Sumatif Matematika Kelas ${CONFIG.KELAS}`,
       pageWidth / 2,
       9,
       { align: 'center' }
@@ -360,7 +361,8 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
     }
   });
 
-  doc.save(`Naskah_Soal_Matematika_Kelas_VI_${CONFIG.SEKOLAH.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
+  const safeSekolah = CONFIG.SEKOLAH.replace(/[^a-zA-Z0-9]/g, '_');
+  doc.save(`Naskah_Soal_Matematika_Kelas_${CONFIG.KELAS}_${safeSekolah}.pdf`);
 }
 
 /**
@@ -626,7 +628,8 @@ export function downloadResultsRecapPDF(results: ExamResult[]): void {
   doc.line(colRightX, sigLineY + 1, colRightX + 50, sigLineY + 1);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
-  doc.text(`NIP. ${CONFIG.NIP_GURU}`, colRightX, sigLineY + 5);
+  const guruRecapLabel = (CONFIG as any).LABEL_NIP_GURU || 'NIP';
+  doc.text(`${guruRecapLabel}. ${CONFIG.NIP_GURU}`, colRightX, sigLineY + 5);
 
   // --- FOOTER DI SETIAP HALAMAN ---
   const totalPages = doc.getNumberOfPages();

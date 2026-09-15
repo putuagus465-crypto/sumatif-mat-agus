@@ -151,7 +151,7 @@ export const Stage3Result: React.FC<Stage3ResultProps> = ({
               Data Anda telah tersinkronisasi ke Google Spreadsheet sekolah.
             </p>
             <p className="mt-0.5 text-blue-800">
-              Anda dapat mengunduh lembar hasil tes resmi dalam bentuk PDF di bawah ini. Lembar ini memuat kolom tanda tangan resmi Guru Kelas VI ({CONFIG.GURU}) dan Orang Tua/Wali Murid.
+              Anda dapat mengunduh lembar hasil tes resmi dalam bentuk PDF di bawah ini. Lembar ini memuat kolom tanda tangan resmi Guru Kelas {CONFIG.KELAS} ({CONFIG.GURU}) dan Orang Tua/Wali Murid.
             </p>
           </div>
         </div>

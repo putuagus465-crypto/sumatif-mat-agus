@@ -73,9 +73,9 @@ export const Stage1Identity: React.FC<Stage1IdentityProps> = ({
 
   // Generate opsi hari (1 - 31)
   const days = Array.from({ length: 31 }, (_, i) => String(i + 1));
-  // Generate opsi tahun (2010 - 2016 untuk siswa kelas 6 SD)
+  // Generate opsi tahun (rentang usia siswa SD)
   const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 10 }, (_, i) => String(currentYear - 16 + i));
+  const years = Array.from({ length: 12 }, (_, i) => String(currentYear - 13 + i));
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
@@ -255,15 +255,15 @@ export const Stage1Identity: React.FC<Stage1IdentityProps> = ({
             <div className="space-y-2 text-xs">
               <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
                 <span>1. Pilihan Ganda (PG)</span>
-                <span className="font-bold text-blue-300">18 Butir</span>
+                <span className="font-bold text-blue-300">10 Butir</span>
               </div>
               <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
                 <span>2. Pilihan Ganda Kompleks (PGK)</span>
-                <span className="font-bold text-emerald-300">3 Butir</span>
+                <span className="font-bold text-emerald-300">10 Butir</span>
               </div>
               <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
-                <span>3. PGK Kategori (Benar / Salah)</span>
-                <span className="font-bold text-amber-300">9 Butir</span>
+                <span>3. Benar / Salah (PGK Kategori)</span>
+                <span className="font-bold text-amber-300">10 Butir</span>
               </div>
               <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-slate-300">
                 <span>Total Butir Soal:</span>

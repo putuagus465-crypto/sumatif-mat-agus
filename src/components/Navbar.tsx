@@ -26,14 +26,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
-                  {CONFIG.KELAS} • {CONFIG.MATA_PELAJARAN}
+                  Kelas {CONFIG.KELAS} • {CONFIG.MATA_PELAJARAN}
                 </span>
                 <span className="hidden sm:inline-block text-xs font-medium text-slate-500">
-                  Materi {CONFIG.MATERI}
+                  {CONFIG.MATERI}
                 </span>
               </div>
               <h1 id="navbar-app-title" className="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-tight">
-                Sekolah Dasar
+                {CONFIG.SEKOLAH}
               </h1>
             </div>
           </div>
